@@ -16,13 +16,13 @@ $password =$_POST['password'];
 $op = $_GET['op'];
 
 if($op=="in"){
-    $cek = mysql_query("SELECT * FROM login WHERE username='$username' AND password='$password'");
-    if(mysql_num_rows($cek)==1){//jika berhasil akan bernilai 1
-        $c = mysql_fetch_array($cek);
+    $cek = mysqli_query($connect, "SELECT * FROM login WHERE username='$username' AND password='$password'");
+    if(mysqli_num_rows($cek)==1){//jika berhasil akan bernilai 1
+        $c = mysqli_fetch_array($cek);
         $_SESSION['username'] = $c['username'];
         $_SESSION['level_user'] = $c['level_user'];
         if($c['level_user']=="ADMINISTRATOR"){
-           echo "<meta http-equiv='refresh' content='0; ur  l=../index.php'>";
+           echo "<meta http-equiv='refresh' content='0; url=../index.php'>";
 ?>
 <script type="text/javascript">
 		alert("Selamat Datang");

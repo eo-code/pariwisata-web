@@ -25,7 +25,8 @@
                             <th>Alamat</th>
                             <th>Deskripsi</th>
                             <th>Gambar</th>
-                            <th>Kategori</th>
+														<th>Kategori</th>
+														<th>Gambar</th>
                             <th class="text-center" style="width:10%">Action</th>
 			              </tr>
 			            </thead>
@@ -44,9 +45,8 @@
                             <td>$data[gambar]</td>
                             <td>$data[kategori]</td>
                             <td>
-                            	<img src=../gambar/$data[gambar];width=300>
-                            	</td>
-                            <td>$data[kategori]</td>
+															<img src=../gambar/$data[gambar];width=300>
+														</td>
 			                
 			                <td><a href='?mod=edit&id_wisata=$data[id_wisata]'><button type='button' class='btn btn-success'><span class='glyphicon glyphicon-edit'></span></button></a> "; ?>
 			                
@@ -77,35 +77,39 @@
 					      <input type="text" required="required" name='nama_wisata' class="form-control" placeholder="Nama lengkap">
 					    </div>
 					  </div>
-					   <div class="form-group">
-                            <label class="col-sm-2 control-label">Alamat</label>
-                            <div class="col-sm-4">
-                            <input type="text" required="required" name='alamat' class="form-control" placeholder="Alamat lengkap">
-                          </div>
-                        </div> 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Deskripsi</label>
-                            <div class="col-sm-4">
-                            <input type="text" required="required" name='deskripsi' class="form-control" placeholder="Isi deskripsi">
-                        </div>
-                        </div> 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Gambar</label>
-                            <div class="col-sm-4">
-                            <input type="text" required="required" name='gambar' class="form-control" placeholder="Gambar">
-                          </div>
-                        </div> 
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Kategori</label>
-                            <div class="col-sm-4">
-                            <select class="form-control select2" style="width: 100%;" name="kategori">
-                              <option selected="selected">--Pilih Kategori--</option>
-                              <option>Wisata Alam</option>
-                              <option>Wisata Bahari</option>
-                              <option>Wisata Sejarah</option>
-                            </select>
-                          </div>
-                        </div>
+						<div class="form-group">
+								<label class="col-sm-2 control-label">Alamat</label>
+								<div class="col-sm-4">
+								<input type="text" required="required" name='alamat' class="form-control" placeholder="Alamat lengkap">
+							</div>
+						</div> 
+						<div class="form-group">
+								<label class="col-sm-2 control-label">Deskripsi</label>
+								<div class="col-sm-4">
+								<input type="text" required="required" name='deskripsi' class="form-control" placeholder="Isi deskripsi">
+						</div>
+						</div> 
+						<div class="form-group">
+								<label class="col-sm-2 control-label">Gambar</label>
+								<div class="col-sm-4">
+								<input type="text" required="required" name='gambar' class="form-control" placeholder="Gambar">
+							</div>
+						</div> 
+						<div class="form-group">
+								<label class="col-sm-2 control-label">Kategori</label>
+								<div class="col-sm-4">
+								<select class="form-control select2" style="width: 100%;" name="kategori">
+									<option selected="selected">--Pilih Kategori--</option>
+									<?php
+										$queryKategori = $db->query("SELECT * FROM tbl_kategori");
+
+										foreach($queryKategori as $data) :
+									?>
+									<option value="<?= $data['nm_kategori'];?>"><?= $data['nm_kategori'];?></option>
+									<?php endforeach;?>
+								</select>
+							</div>
+						</div>
 					  <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-4">
 					      <button type='submit' name='submit' class='btn btn-primary' onClick="return confirm('Yakin akan Tambah Data?')">Tambah</button>
@@ -123,44 +127,44 @@
 				    <form method='POST' action='aksi.php?mod=edit' class='form-horizontal'>
 				    <h4>Edit Data Wisata</h4><hr><br>
 				    
-				     <div class="form-group">
+						<div class="form-group">
 					    <label class="col-sm-2 control-label">Id_wisata</label>
 					    <div class="col-sm-4">
-					      <input type="text" required="required"  name='id_wisata' class="form-control"  value="<?php echo $data['id_wisata'];?> ">
+					      <input type="text" required="required" readonly="true"  name='id_wisata' class="form-control"  value="<?php echo $data['id_wisata'];?>">
 					    </div>
 					  </div>
                      
-                      <div class="form-group">
+						<div class="form-group">
 					    <label class="col-sm-2 control-label">Nama_wisata</label>
 					    <div class="col-sm-4">
-					      <input type="text" required="required"  name='nama_wisata' class="form-control"  value="<?php echo $data['nama_wisata'];?> ">
+					      <input type="text" required="required"  name='nama_wisata' class="form-control"  value="<?php echo $data['nama_wisata'];?>">
 					    </div>
 					  </div>
                     
-                    <div class="form-group">
-					  <label class="col-sm-2 control-label">Alamat</label>
-                          <div class="col-sm-4">
-                           <input type="text" required="required"  name='alamat' class="form-control"  value="<?php echo $data['alamat'];?> ">  
-                          </div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Alamat</label>
+							<div class="col-sm-4">
+								<input type="text" required="required"  name='alamat' class="form-control"  value="<?php echo $data['alamat'];?>">  
+							</div>
 					  </div>
-                        <div class="form-group">
-					  <label class="col-sm-2 control-label">Deskripsi</label>
-                          <div class="col-sm-4">
-                           <input type="text" required="required"  name='deskripsi' class="form-control"  value="<?php echo $data['deskripsi'];?> ">  
-                          </div>
-                        </div> 
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Deskripsi</label>
+							<div class="col-sm-4">
+								<input type="text" required="required"  name='deskripsi' class="form-control"  value="<?php echo $data['deskripsi'];?>">  
+							</div>
+						</div> 
                     	                        	                        
                      <div class="form-group">
 					  <label class="col-sm-2 control-label">Gambar</label>
                           <div class="col-sm-4">
-                            <input type="text" required="required"  name='gambar' class="form-control"  value="<?php echo $data['gambar'];?> "> 
+                            <input type="text" required="required"  name='gambar' class="form-control"  value="<?php echo $data['gambar'];?>"> 
                           </div>
                             </div>
 	                        	                        
                      <div class="form-group">
 					  <label class="col-sm-2 control-label">Kategori</label>
                           <div class="col-sm-4">
-                            <input type="option" required="required"  name='kategori' class="form-control"  value="<?php echo $data['kategori'];?> "> 
+                            <input type="option" required="required"  name='kategori' class="form-control"  value="<?php echo $data['kategori'];?>"> 
                           </div>
                             </div>
 					  <div class="form-group">

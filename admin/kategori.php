@@ -20,29 +20,26 @@
 			            <thead>
 			              <tr>
 			                <th style="width:3%">No.</th>
-                            <th>Id_kategori</th>
-                            <th>Nama_kategori</th>
-                            <th class="text-center" style="width:10%">Action</th>
+											<th>Id_kategori</th>
+											<th>Nama_kategori</th>
+											<th class="text-center" style="width:10%">Action</th>
 			              </tr>
 			            </thead>
 			            <tbody>
 			            	<?php 
 			            		$no = 1;
 			            		$sql = $db->query("SELECT * FROM tbl_kategori");
-			            		while ($data = $sql->fetch_array()) { 
-			            		echo" 
+			            		foreach ($sql as $data) :
+										?>	
 			              <tr>
-			                <td>$no</td>
-                            <td>$data[id_kategori]</td>
-                            <td>$data[nm_kategori]</td>
-                            
-                            <td>
-                          
-			                <td><a href='?mod=edit&id_kategori=$data[id_kategori]'><button type='button' class='btn btn-success'><span class='glyphicon glyphicon-edit'></span></button></a> "; ?>
+			                <td><?=$no++?></td>
+											<td><?= $data['id_kategori'];?></td>
+											<td><?= $data['nm_kategori']?></td>											                          
+			                <td><a href='?mod=edit&id_kategori=<?= $data['id_kategori'];?>'><button type='button' class='btn btn-success'><span class='glyphicon glyphicon-edit'></span></button></a>
 			                
-			                <a href='aksi.php?mod=delete&id_kategori=<?php echo $data['id_kategori'];?>' onClick="return confirm('Yakin akan menghapus Data?')"><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-remove-sign'></button></a></td>
-			              </tr>
-			              <?php $no++; } ?>
+			                <a href="aksi_kategori.php?mod=delete&id_kategori=<?= $data['id_kategori'];?>" onClick="return confirm('Yakin akan menghapus Data?')"><button type='button' class='btn btn-danger'><span class='glyphicon glyphicon-remove-sign'></button></a></td>
+										</tr>
+										<?php endforeach;?>
 			            </tbody>
 			          </table>
 		       		</div>
@@ -78,7 +75,7 @@
 				break;
 				
 				case 'edit':
-					$sql = $db->query("SELECT * FROM tbl_kategori WHERE id_wisata='$_GET[id_kategori]' ");
+					$sql = $db->query("SELECT * FROM tbl_kategori WHERE id_kategori='$_GET[id_kategori]' ");
 					$data = $sql->fetch_array();
 					
 					?>
@@ -86,16 +83,16 @@
 				    <h4>Edit Data Wisata</h4><hr><br>
 				    
 				     <div class="form-group">
-					    <label class="col-sm-2 control-label">Id_wisata</label>
+					    <label class="col-sm-2 control-label">Id Kategori</label>
 					    <div class="col-sm-4">
-					      <input type="text" required="required"  name='id_wisata' class="form-control"  value="<?php echo $data['id_wisata'];?> ">
+					      <input type="text" required="required" readonly="true"  name='id_kategori' class="form-control"  value="<?php echo $data['id_kategori'];?>">
 					    </div>
 					  </div>
                      
                       <div class="form-group">
 					    <label class="col-sm-2 control-label">Nama_kategori</label>
 					    <div class="col-sm-4">
-					      <input type="text" required="required"  name='nm_kategori' class="form-control"  value="<?php echo $data['nm_kategori'];?> ">
+					      <input type="text" required="required"  name='nm_kategori' class="form-control"  value="<?php echo $data['nm_kategori'];?>">
 					    </div>
 					  </div>
                     

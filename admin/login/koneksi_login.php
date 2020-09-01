@@ -4,7 +4,6 @@ $host = 'localhost';
 $user = 'root';
 $pass = '';
 $dbname = 'db_pariwisata';
-// $connect = mysql_connect($host, $user, $pass ) or die (mysql_error());
-// $dbselect = mysql_select_db($dbname, $connect);
+$connect = mysqli_connect($host, $user, $pass, $dbname );
 $tanggal=date("Y-m-d H:i:s");
 ?>
