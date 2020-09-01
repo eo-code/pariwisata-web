@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.jumbotron {
+    background-size: cover;
+    height: 500px;
+    position: relative;
+    color: #ffffff;
+}
+
+.jumbotron h1,
+p {
+    z-index: 2;
+}
+
+.jumbotron .shape {
+    width: 65%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+    background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(255, 193, 7, 0));
+    z-index: 0;
+}
+
+/* Kategori */
+
+.wrap-kategori .card-k {
+    width: 100%;
+    height: 280px;
+    border-radius: 10px;
+    box-shadow: 0 0 17px 3px rgba(160, 121, 4, 0.2);
+}
+
+.wrap-kategori .card-k .img {
+    width: 100%;
+    background-color: aqua;
+    height: 180px;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    margin-top: 1.5em;
+}
+
+.wrap-kategori .card-k .img .shape-shadow {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(160, 121, 4, 0.4), rgba(255, 193, 7, 0));
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.wrap-kategori .card-k .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.wrap-kategori .card-k .detail {
+    padding: 1.5em 0 0 1em;
+}
+
+/* Galeri */
+
+.row-img .column {
+    flex: 25%;
+    max-width: 50%;
+    padding: 0 4px;
+}
+
+.row-img .column .img {
+    position: relative;
+}
+
+.row-img .column .img:hover .shadow {
+    opacity: 1;
+}
+
+.row-img .column .img .shadow {
+    width: 100%;
+    height: 97%;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: .4s;
+}
+
+.row-img .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
