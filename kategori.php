@@ -73,8 +73,9 @@
 
   <div class="kategori pb-5">
     <div class="container">
+      
+      <?php if(!isset($_GET['k'])):?>
       <h2>Kategori</h2>
-
       <div class="wrap-kategori row mt-5">
         <!-- <div class="col-md-3">
           <div class="card-p">
@@ -126,7 +127,7 @@
           foreach($queryKategori as $kategori):
         ?>
         <div class="col-md-4">
-          <a href="">
+          <a href="kategori.php?k=<?= $kategori['nm_kategori'];?>">
             <div class="card-k">
               <div class="img">
                 <img src="./img/download.jpg" alt="">
@@ -137,8 +138,41 @@
           </a>
         </div>
         <?php endforeach;?>
-
       </div>
+      <?php endif;?>
+      
+      <?php if(isset($_GET['k'])):?>
+        <h2><?= $_GET['k'];?></h2>
+        <div class="wrap-kategori row mt-5">
+        <?php
+          $kategori = $_GET['k'];
+          $queryProdukKategori = $db->query("SELECT * FROM wisata WHERE kategori='$kategori'");
+          if(mysqli_num_rows($queryProdukKategori) >= 1):
+            foreach($queryProdukKategori as $produk):
+        ?>
+            <div class="col-md-3">
+              <div class="card-p">
+                <div class="img">
+                  <div class="shape-shadow"></div>
+                  <img src="img/download.jpg" alt="">
+                </div>
+                <div class="detail">
+                  <h5><?= $produk['nama_wisata'];?></h5>
+                </div>
+              </div>
+            </div>
+          <?php endforeach;?>
+        <?php endif;?>
+        <?php if(mysqli_num_rows($queryProdukKategori) < 1) :?>
+          <div class="d-flex justify-content-center align-items-center w-100 mt-5 pb-5 flex-column">
+            <h4>Tidak ada produk untuk kategori <?= $_GET['k'];?></h4>
+            <a href="kategori.php" class="btn bg-warning mt-5" style="color: #ffffff; width: 120px; height: 40px;">
+              Kembali
+            </a>
+          </div>
+        <?php endif;?>
+        </div>
+      <?php endif;?>
     </div>
   </div>
 
