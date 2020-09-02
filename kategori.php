@@ -1,3 +1,6 @@
+<?php
+  include './admin/include/koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,22 +39,17 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home
+            <a class="nav-link" href="index.php">Home
             </a>
           </li>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
-            <li><a href="#">Regular link</a></li>
-            <li class="disabled"><a href="#">Disabled link</a></li>
-            <li><a href="#">Another link</a></li>
-          </ul>
           <li class="nav-item active">
-            <a class="nav-link" href="kategori.html">Kategori<span class="sr-only">(current)</span></a>
+            <a class="nav-link " href="kategori.php">Kategori<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="galeri.html">Galeri</a>
+            <a class="nav-link" href="galeri.php">Galeri</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="kontak.html">Kontak</a>
+            <a class="nav-link" href="kontak.php">Kontak</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="admin/login/login.php">Login</a>
@@ -60,6 +58,8 @@
       </div>
     </div>
   </nav>
+
+
 
   <!-- Jumbotron Header -->
   <div class="jumbotron" style="background: url('img/gambar1.jpg')no-repeat;background-size: cover;">
@@ -71,71 +71,73 @@
   </div>
   <!-- batas jumbotron header -->
 
-  <div class="container">
-    <!-- <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="img/images-pulau-dua.jpg" alt="">
-          <div class="caption">
-            <h3>Pulau Dua</h3>
+  <div class="kategori pb-5">
+    <div class="container">
+      <h2>Kategori</h2>
+
+      <div class="wrap-kategori row mt-5">
+        <!-- <div class="col-md-3">
+          <div class="card-p">
+            <div class="img">
+              <div class="shape-shadow"></div>
+              <img src="img/download.jpg" alt="">
+            </div>
+            <div class="detail">
+              <h5>Title Here</h5>
+            </div>
           </div>
         </div>
-      </div>
-
-
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="img/images-pantai-jeen-wowom.jpg" alt="...">
-          <div class="caption">
-            <h3>Pantai Jeen Wowon</h3>
+        <div class="col-md-3">
+          <div class="card-p">
+            <div class="img">
+              <div class="shape-shadow"></div>
+              <img src="img/download.jpg" alt="">
+            </div>
+            <div class="detail">
+              <h5>Title Here</h5>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <img src="img/image-peninggala-PD-II.jpg" alt="...">
-          <div class="caption">
-            <h3>Peninggalan PD II</h3>
+        <div class="col-md-3">
+          <div class="card-p">
+            <div class="img">
+              <div class="shape-shadow"></div>
+              <img src="img/download.jpg" alt="">
+            </div>
+            <div class="detail">
+              <h5>Title Here</h5>
+            </div>
           </div>
         </div>
-      </div>
-    </div> -->
-
-    <h2>Galeri</h2>
-
-    <div class="row-img d-flex flex-wrap w-100 mt-5 pb-5">
-      <div class="column">
-        <div class="img">
-          <div class="shadow d-flex justify-content-center align-items-center">
-            <h4>Title Here</h4>
+        <div class="col-md-3">
+          <div class="card-p">
+            <div class="img">
+              <div class="shape-shadow"></div>
+              <img src="img/download.jpg" alt="">
+            </div>
+            <div class="detail">
+              <h5>Title Here</h5>
+            </div>
           </div>
-          <img src="img/images-pantai-jeen-wowom.jpg" alt="...">
-        </div>
-        <div class="img">
-          <div class="shadow d-flex justify-content-center align-items-center">
-            <h4>Title Here</h4>
-          </div>
-          <img src="img/images-pulau-dua.jpg" alt="...">
-        </div>
+        </div> -->
+        <?php 
+          $queryKategori = $db->query("SELECT * FROM tbl_kategori");
 
-        <img src="img/image-peninggala-PD-II.jpg" alt="...">
-        <img src="img/images-pulau-dua.jpg" alt="">
-      </div>
-      <div class="column">
-        <img src="img/images-pantai-jeen-wowom.jpg" alt="...">
-        <img src="img/images-pulau-dua.jpg" alt="">
-        <div class="img">
-          <div class="shadow d-flex justify-content-center align-items-center">
-            <h4>Title Here</h4>
-          </div>
-          <img src="img/image-peninggala-PD-II.jpg" alt="...">
+          foreach($queryKategori as $kategori):
+        ?>
+        <div class="col-md-4">
+          <a href="">
+            <div class="card-k">
+              <div class="img">
+                <img src="./img/download.jpg" alt="">
+                <div class="shadow"></div>
+                <h3><?= $kategori['nm_kategori'];?></h3>
+              </div>
+            </div>
+          </a>
         </div>
-      </div>
-      <div class="column">
-        <img src="img/image-peninggala-PD-II.jpg" alt="...">
-        <img src="img/images-pantai-jeen-wowom.jpg" alt="...">
-        <img src="img/image-peninggala-PD-II.jpg" alt="...">
+        <?php endforeach;?>
+
       </div>
     </div>
   </div>
