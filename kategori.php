@@ -1,5 +1,5 @@
 <?php
-  include './admin/include/koneksi.php';
+include './admin/include/koneksi.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,8 +29,7 @@
   <nav class="navbar navbar-default navbar-expand-lg bg-warning fixed-top">
     <div class="container">
       <a class="navbar-brand custom_navbar-brand font-weight-bold ">Wisata Kab. Tambrauw</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -62,7 +61,7 @@
 
 
   <!-- Jumbotron Header -->
-  <div class="jumbotron" style="background: url('img/gambar1.jpg')no-repeat;background-size: cover;">
+  <div class="jumbotron" style="background: url('img/killian-pham-Sq8rpq2KB7U-unsplash.jpg')no-repeat;background-size: cover;">
     <div class="shape"></div>
     <div class="container d-flex justify-content-center flex-column h-100">
       <h1 class="display-5 font-weight-bold">Wisata Kabupaten Tambrauw</h1>
@@ -73,10 +72,11 @@
 
   <div class="kategori pb-5">
     <div class="container">
-      <h2>Kategori</h2>
 
-      <div class="wrap-kategori row mt-5">
-        <!-- <div class="col-md-3">
+      <?php if (!isset($_GET['k'])) : ?>
+        <h2>Kategori</h2>
+        <div class="wrap-kategori row mt-5">
+          <!-- <div class="col-md-3">
           <div class="card-p">
             <div class="img">
               <div class="shape-shadow"></div>
@@ -120,25 +120,59 @@
             </div>
           </div>
         </div> -->
-        <?php 
+          <?php
           $queryKategori = $db->query("SELECT * FROM tbl_kategori");
 
-          foreach($queryKategori as $kategori):
-        ?>
-        <div class="col-md-4">
-          <a href="">
-            <div class="card-k">
-              <div class="img">
-                <img src="./img/download.jpg" alt="">
-                <div class="shadow"></div>
-                <h3><?= $kategori['nm_kategori'];?></h3>
-              </div>
+          foreach ($queryKategori as $kategori) :
+          ?>
+            <div class="col-md-4">
+              <a href="kategori.php?k=<?= $kategori['nm_kategori']; ?>&id=<?= $kategori['id_kategori']; ?>">
+                <div class="card-k">
+                  <div class="img">
+                    <img src="./img/<?= $kategori['gambar_kategori']; ?>" alt="">
+                    <div class="shadow"></div>
+                    <h3><?= $kategori['nm_kategori']; ?></h3>
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
+          <?php endforeach; ?>
         </div>
-        <?php endforeach;?>
+      <?php endif; ?>
 
-      </div>
+      <?php if (isset($_GET['k'])) : ?>
+        <h2><?= $_GET['k']; ?></h2>
+        <div class="wrap-kategori row mt-5">
+          <?php
+          $kategori = $_GET['k'];
+          $idKategori = $_GET['id'];
+          $queryProdukKategori = $db->query("SELECT * FROM wisata WHERE id_kategori='$idKategori'");
+          if (mysqli_num_rows($queryProdukKategori) >= 1) :
+            foreach ($queryProdukKategori as $produk) :
+          ?>
+              <div class="col-md-3">
+                <div class="card-p">
+                  <div class="img">
+                    <div class="shape-shadow"></div>
+                    <img src="img/<?= $produk['gambar']; ?>" alt="">
+                  </div>
+                  <div class="detail">
+                    <h5><?= $produk['nama_wisata']; ?></h5>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+          <?php if (mysqli_num_rows($queryProdukKategori) < 1) : ?>
+            <div class="d-flex justify-content-center align-items-center w-100 mt-5 pb-5 flex-column">
+              <h4>Tidak ada produk untuk kategori <?= $_GET['k']; ?></h4>
+              <a href="kategori.php" class="btn bg-warning mt-5" style="color: #ffffff; width: 120px; height: 40px;">
+                Kembali
+              </a>
+            </div>
+          <?php endif; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 

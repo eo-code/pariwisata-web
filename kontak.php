@@ -26,8 +26,7 @@
   <nav class="navbar navbar-default navbar-expand-lg bg-warning fixed-top">
     <div class="container">
       <a class="navbar-brand custom_navbar-brand font-weight-bold">Wisata Kab. Tambrauw</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -57,7 +56,7 @@
   </nav>
 
   <!-- Jumbotron Header -->
-  <div class="jumbotron" style="background: url('img/gambar1.jpg')no-repeat;background-size: cover;">
+  <div class="jumbotron" style="background: url('img/killian-pham-Sq8rpq2KB7U-unsplash.jpg')no-repeat;background-size: cover;">
     <div class="shape"></div>
     <div class="container d-flex justify-content-center flex-column h-100">
       <h1 class="display-5 font-weight-bold">Wisata Kabupaten Tambrauw</h1>
@@ -75,10 +74,7 @@
 
       <div class="row">
         <div class="col-md-7">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021312.6816812262!2d131.91652998515045!3d-0.7207290173221729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d59e153f8c63f75%3A0x8422f4aa1edd9a9e!2sKabupaten%20Tambrauw%2C%20Papua%20Bar.!5e0!3m2!1sid!2sid!4v1598670993734!5m2!1sid!2sid"
-            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-            tabindex="0"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021312.6816812262!2d131.91652998515045!3d-0.7207290173221729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d59e153f8c63f75%3A0x8422f4aa1edd9a9e!2sKabupaten%20Tambrauw%2C%20Papua%20Bar.!5e0!3m2!1sid!2sid!4v1598670993734!5m2!1sid!2sid" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
         <div class="col-md-5">
           <div class="office">

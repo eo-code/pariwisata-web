@@ -1,3 +1,4 @@
+<?php include './admin/include/koneksi.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,8 +27,7 @@
   <nav class="navbar navbar-default navbar-expand-lg bg-warning fixed-top">
     <div class="container">
       <a class="navbar-brand custom_navbar-brand font-weight-bold ">Wisata Kab. Tambrauw</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -62,7 +62,7 @@
   </nav>
 
   <!-- Jumbotron Header -->
-  <div class="jumbotron" style="background: url('img/gambar1.jpg')no-repeat;background-size: cover;">
+  <div class="jumbotron" style="background: url('img/killian-pham-Sq8rpq2KB7U-unsplash.jpg')no-repeat;background-size: cover;">
     <div class="shape"></div>
     <div class="container d-flex justify-content-center flex-column h-100">
       <h1 class="display-5 font-weight-bold">Wisata Kabupaten Tambrauw</h1>
@@ -105,7 +105,7 @@
     <h2>Galeri</h2>
 
     <div class="row-img d-flex flex-wrap w-100 mt-5 pb-5">
-      <div class="column">
+      <!-- <div class="column">
         <div class="img">
           <div class="shadow d-flex justify-content-center align-items-center">
             <h4>Title Here</h4>
@@ -136,7 +136,21 @@
         <img src="img/image-peninggala-PD-II.jpg" alt="...">
         <img src="img/images-pantai-jeen-wowom.jpg" alt="...">
         <img src="img/image-peninggala-PD-II.jpg" alt="...">
-      </div>
+      </div> -->
+      <?php
+      $queryGaleri = $db->query("SELECT * FROM tb_galeri");
+
+      foreach ($queryGaleri as $galeri) :
+      ?>
+        <div class="column">
+          <div class="img">
+            <div class="shadow d-flex justify-content-center align-items-center">
+              <h4><?= $galeri['judul_gambar']; ?></h4>
+            </div>
+            <img src="img/<?= $galeri['nama_gambar']; ?>" alt="...">
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
   </div>
 
